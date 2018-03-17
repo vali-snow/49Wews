@@ -130,6 +130,14 @@ aside li div {
     justify-content: center;
 }
 /*MIDDLE CONTENT SECTION*/
+section {
+    background-color: var(--accentOpacityColor);
+    width: 100%;
+    margin: 10px;
+    display:flex;
+    flex-direction: column;
+    overflow: auto;
+}
 /*FOOTER*/
 footer div {
     text-align: center;
