@@ -67,4 +67,11 @@ $(document).ready(function () {
             }
         });
     });
+    $("aside").load("../html/common/aside.html");
+    $("footer").load("../html/common/footer.html");
+    $("modalLogin").load("../html/common/modalLogin.html", function () {
+        $(".modal-header > i, .modal-body > form > button").click(function () {
+            $("modalLogin").eq(0).css("display", "none");
+        });
+    });
 });
