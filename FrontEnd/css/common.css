@@ -1,15 +1,36 @@
 /*BODY*/
+* {
+    margin: 0;
+    padding: 0;
+    --accentColor : rgb(255,55,55);
+    --accentBGColor : rgb(255,55,55);
+    --accentOpacityColor: rgba(255,55,55,0.5);
+    --themeColor: rgb(25,25,25);
+    --themeBGColor: rgb(240,240,240);
+    --themeLineColor: rgb(110,110,110);
+}
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 575px;
+    min-height: 440px;
+}
 /*TOP NAV*/
 nav {
-    background-color: red;
+    background-color: var(--themeBGColor);
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--themeLineColor);
+
 }
 .menu {
-    color: black;
+    color: var(--themeColor);
     cursor: pointer;
 }
 .menuBurger {
@@ -18,7 +39,7 @@ nav {
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
-    background-color: red;
+    background-color: var(--themeColor);
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -32,9 +53,10 @@ nav {
 .menuBurger:hover > .bar1,
 .menuBurger:hover > .bar2,
 .menuBurger:hover > .bar3 {
-    background-color: yellow;
+    background-color: var(--accentBGColor);
 }
 .menuTitle{
+    font-family: 'Ceviche One', cursive;
     font-size: 50px;
     line-height: 60px;
     padding: 0px 0px 0px 0px;
@@ -63,7 +85,7 @@ nav {
 .menuTheme:hover,
 .menuAccent:hover,
 .menuQuit:hover {
-    color: yellow;
+    color: var(--accentColor);
 }
 /*MIDDLE*/
 /*MIDDLE SIDEBAR*/
@@ -104,8 +126,7 @@ modalLogin {
     font-size: 20px;
     color: white;
     padding: 5px 15px 5px 15px;
-    background-color: red;
-    
+    background-color: var(--accentBGColor);
 }
 .close {
     color: white;
@@ -148,6 +169,6 @@ modalLogin {
 }
 .modal-footer {
     padding: 5px 16px;
-    background-color: red;
+    background-color: var(--accentBGColor);
     color: white;
 }
