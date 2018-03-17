@@ -1,0 +1,72 @@
+/*BODY*/
+/*TOP NAV*/
+nav {
+    background-color: red;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.menu {
+    color: black;
+    cursor: pointer;
+}
+.menuBurger {
+    padding: 3px 15px 0px 15px;
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: red;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+.change .bar1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+.change .bar2 {opacity: 0;}
+.change .bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+.menuBurger:hover > .bar1,
+.menuBurger:hover > .bar2,
+.menuBurger:hover > .bar3 {
+    background-color: yellow;
+}
+.menuTitle{
+    font-size: 50px;
+    line-height: 60px;
+    padding: 0px 0px 0px 0px;
+}
+.menuLoginLogout {
+    display:inline-block;
+    font-size:35px;
+    padding: 6px 0px 0px 13px;
+}
+.menuTheme {
+    display:inline-block;
+    font-size:35px;
+    padding: 6px 0px 0px 13px;
+}
+.menuAccent {
+    display:inline-block;
+    font-size:35px;
+    padding: 6px 0px 0px 13px;
+}
+.menuQuit {
+    display:inline-block;
+    font-size:35px;
+    padding: 6px 13px 0px 13px;
+}
+.menuLoginLogout:hover,
+.menuTheme:hover,
+.menuAccent:hover,
+.menuQuit:hover {
+    color: var(--accentColor);
+}
+/*MIDDLE*/
+/*MIDDLE SIDEBAR*/
+/*MIDDLE CONTENT SECTION*/
+/*FOOTER*/
+/*LOGIN MODAL*/
