@@ -88,9 +88,56 @@ nav {
     color: var(--accentColor);
 }
 /*MIDDLE*/
+middle {
+    display: flex;
+    height: 100%;
+}
 /*MIDDLE SIDEBAR*/
+aside {
+    background-color: var(--themeBGColor);
+    height: 100%;
+    font-family: 'Exo 2', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 65px;
+}
+aside li {
+    cursor: pointer;
+    border-bottom: 1px solid var(--themeLineColor);
+    margin-bottom: -1px;
+    height: 60px;
+    color: var(--themeColor);
+    display: flex;
+    align-items: center;
+}
+aside li:hover > i {
+    color: var(--accentColor);
+}
+aside li i {
+    list-style: none;
+    display: flex;
+    font-size: 40px;
+    line-height: 60px;
+    width: 65px;
+    text-align: center;
+}
+aside li div {
+    list-style: none;
+    display: none;
+    font-size: 20px;
+    line-height: 60px;
+    width: 135px;
+    justify-content: center;
+}
 /*MIDDLE CONTENT SECTION*/
 /*FOOTER*/
+footer div {
+    text-align: center;
+    line-height: 40px;
+    color: var(--themeColor);
+    background-color: var(--themeBGColor);
+    border-top: 1px solid var(--themeLineColor);
+}
 /*LOGIN MODAL*/
 modalLogin {
     display: none;
