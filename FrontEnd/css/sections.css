@@ -47,6 +47,46 @@
     color: var(--accentColor);
 }
 /*ORGANIZE*/
+#organize article {
+    padding: 10px 10px 10px 10px;
+}
+#organize table {
+    border-collapse: collapse;
+    width: 600px;
+    margin: 5% auto;
+}
+#organize th, #organize td {
+    border: 1px solid var(--themeLineColor);
+    text-align: left;
+    padding: 8px;
+}
+#organize th{
+    text-align: center;
+}
+#organize tr td:nth-of-type(1){
+    text-align: center;
+    width: 10px;
+}
+#organize tr td:nth-of-type(2){
+    text-indent: 20px;
+}
+#organize tr td:nth-of-type(3){
+    text-align: center;
+    width: 60px;
+}
+#organize th {
+    color: var(--themeColor);
+    background-color: var(--themeBGColor);
+}
+#organize tr:not(:first-child):hover{
+    background-color: white;
+}
+#organize th i{
+    color: red;
+}
+#organize i:hover{
+    color: var(--accentColor);
+}
 /*DISCOVER*/
 #discover article {
     padding: 10px;
