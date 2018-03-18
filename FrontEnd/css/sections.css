@@ -1,5 +1,22 @@
 /*MIDDLE CONTENT SECTION*/
 /*INDEX*/
+#index article {
+    padding: 10px;
+}
+#index article>h1{
+    padding: 0px 100px 0px 0px;
+    font-size: 30px;
+    text-align: center;
+}
+#index article>p{
+    font-size: 20px;
+    text-align: center;
+    padding: 0px 0px 10px 0px;
+}
+#index main>p{
+    text-indent: 25px;
+    text-align: justify;
+}
 /*READ FEEDS*/
 /*ORGANIZE*/
 /*DISCOVER*/
