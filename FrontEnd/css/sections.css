@@ -21,3 +21,39 @@
 /*ORGANIZE*/
 /*DISCOVER*/
 /*CONTACT*/
+#contact article {
+    padding: 10px;
+    width: 600px;
+    margin: 5% auto;
+}
+#contact mainH {
+    font-family: 'Ceviche One', cursive;
+    font-size: 40px;
+    line-height: 50px;
+}
+#contact main {
+    display: flex;
+    flex-direction: column;
+}
+#contact main div {
+    display: inline-flex;
+    width: 100%;
+    padding: 0px 0px 5px 0px;
+}
+#contact main div > *{
+    width: 100%;
+    line-height: 20px;
+    text-indent: 25px;
+}
+#contact mainF button {
+    height: 35px;
+    background-color: var(--themeBGColor);
+    color: var(--themeColor);
+    border: thin solid var(--themeLineColor);
+    float: right;
+    padding: 0 20px;
+}
+#contact mainF button:hover {
+    background-color: var(--accentColor);
+
+}
