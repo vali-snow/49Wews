@@ -18,6 +18,34 @@
     text-align: justify;
 }
 /*READ FEEDS*/
+#readFeeds article {
+    padding: 10px;
+    border-bottom: 1px solid var(--themeLineColor);
+}
+#readFeeds header {
+    font-size: 20px;
+    padding: 0px 0px 0px 25px;
+}
+#readFeeds main{
+    display: inline-flex;
+    overflow: hidden;
+    height: 72px;
+    padding: 5px 0px 0px 0px;
+}
+#readFeeds main img {
+    border: 1px solid var(--accentColor);
+    margin: 0px 10px 0px 0px;
+    height: 70px;
+    width: 70px;
+}
+#readFeeds main p {
+    text-indent: 10px;
+    text-align: justify;
+}
+#readFeeds main i {
+    align-self: flex-end;
+    color: var(--accentColor);
+}
 /*ORGANIZE*/
 /*DISCOVER*/
 #discover article {
