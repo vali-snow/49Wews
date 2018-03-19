@@ -1,4 +1,4 @@
-/*global $, document*/
+/*global $, document, confirm*/
 $(document).ready(function () {
     'use strict';
     $("#organize th > i").click(function () {
@@ -6,6 +6,9 @@ $(document).ready(function () {
     });
     $("#organize td:last-child>i.fa-edit").click(function () {
         $("modalEditSource").eq(0).css("display", "block");
+    });
+    $("#organize td:last-child>i.fa-eraser").click(function () {
+        confirm("Proceed with deletion?");
     });
     $("modalAddSource").load("common/modalAddSource.html", function () {
         $(".modal-header > i, .modal-body > form > button").click(function () {
