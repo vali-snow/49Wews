@@ -61,11 +61,6 @@ nav {
     line-height: 60px;
     padding: 0px 0px 0px 0px;
 }
-.menuLoginLogout {
-    display:inline-block;
-    font-size:35px;
-    padding: 6px 0px 0px 13px;
-}
 .menuTheme {
     display:inline-block;
     font-size:35px;
@@ -76,15 +71,14 @@ nav {
     font-size:35px;
     padding: 6px 0px 0px 13px;
 }
-.menuQuit {
+.menuLogout {
     display:inline-block;
     font-size:35px;
     padding: 6px 13px 0px 13px;
 }
-.menuLoginLogout:hover,
+.menuLogout:hover,
 .menuTheme:hover,
-.menuAccent:hover,
-.menuQuit:hover {
+.menuAccent:hover {
     color: var(--accentColor);
 }
 /*MIDDLE*/

@@ -1,4 +1,4 @@
-/*global $, Cookies, confirm, document, window */
+/*global $, Cookies, confirm, document, window*/
 function initCookies() {
     'use strict';
     if (Cookies.get("sidebarExtended") === undefined) {
@@ -56,14 +56,32 @@ function initCookies() {
 
 $(document).ready(function () {
     'use strict';
+    if (Cookies.get("sessionId")===undefined || Cookies.get("readerId")===undefined) {
+        window.location = '..\\phpClient\\login.php';
+    } else if (Math.random() >= 0.75) {
+        var dataString = 'readerId='+Cookies.get("readerId")+'&sessionId='+Cookies.get("sessionId");
+        $.post('..\\phpServer\\checkSessionId.php', dataString, function () {
+        })
+        .done(function (jsonObj) {
+            var response = JSON.parse(jsonObj);
+            if(!response.success){
+                Cookies.remove('sessionId');
+                Cookies.remove('readerId');
+                window.location = '..\\phpClient\\login.php';
+            }
+        })
+        .fail(function (response) {
+            console.log('Error while checking SessionID:\n' + response.status + ' - ' + response.statusText);
+            window.location = '..\\phpClient\\login.php';
+        });
+    }
     var d1 = new $.Deferred(),
         d2 = new $.Deferred(),
-        d3 = new $.Deferred(),
-        d4 = new $.Deferred();
-    $.when(d1, d2, d3, d4).then(function () {
+        d3 = new $.Deferred();
+    $.when(d1, d2, d3).then(function () {
         initCookies();
     });
-    $("nav").load("../html/common/nav.html", function () {
+    $("nav").load("../html/nav.html", function () {
         $(".menuBurger").click(function () {
             $(".menuBurger").toggleClass("change");
             if ($(".menuBurger").hasClass("change")) {
@@ -75,9 +93,6 @@ $(document).ready(function () {
                 $("aside").eq(0).css("width", "65px");
                 $("aside li div").css("display", "none");
             }
-        });
-        $(".menuLoginLogout").click(function () {
-            $("modalLogin").eq(0).css("display", "block");
         });
         $(".menuTheme").click(function () {
             if ($(".menuTheme > i").hasClass("far")) {
@@ -127,20 +142,13 @@ $(document).ready(function () {
             $("*").css("--accentBGColor", accentColor);
             $("*").css("--accentOpacityColor", accentOpacityColor);
         });
-        $(".menuQuit").click(function () {
-            var mywin = window.open('', '_self');
-            if (confirm("Close Window?")) {
-                mywin.close();
+        $(".menuLogout").click(function () {
+            if (confirm("Logout?")) {
+                window.location = '..\\phpClient\\login.php';
             }
         });
         d1.resolve();
     });
-    $("aside").load("../html/common/aside.html", function () { d2.resolve(); });
-    $("footer").load("../html/common/footer.html", function () { d3.resolve(); });
-    $("modalLogin").load("../html/common/modalLogin.html", function () {
-        $(".modal-header > i, .modal-body > form > button").click(function () {
-            $("modalLogin").eq(0).css("display", "none");
-        });
-        d4.resolve();
-    });
+    $("aside").load("../html/aside.html", function () { d2.resolve(); });
+    $("footer").load("../html/footer.html", function () { d3.resolve(); });
 });
