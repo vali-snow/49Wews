@@ -48,6 +48,5 @@
         </section>
     </middle>
     <footer></footer>
-    <modalLogin></modalLogin>
 </body>
 </html>
