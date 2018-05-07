@@ -65,13 +65,16 @@
 }
 #organize tr td:nth-of-type(1){
     text-align: center;
-    width: 10px;
+	width: 15px;
 }
 #organize tr td:nth-of-type(2){
-    text-indent: 20px;
+    text-indent: 15px;
 }
 #organize tr td:nth-of-type(3){
-    text-align: center;
+    text-indent: 15px;
+}
+#organize tr td:nth-of-type(4){
+	text-align: center;
     width: 60px;
 }
 #organize th {
@@ -83,6 +86,10 @@
 }
 #organize th i{
     color: red;
+}
+#organize td i, #organize td a{
+    color: black;
+    margin: 0px 1px;
 }
 #organize i:hover{
     color: var(--accentColor);

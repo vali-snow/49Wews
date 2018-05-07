@@ -43,13 +43,28 @@
 			return;
 		}
 
-	    //Get Subscriptions
+	    //Get all feeds details
 		try{
-	    	$query = "SELECT f.FeedID, f.Name FROM feeds f JOIN subscriptions s ON f.FeedID = s.FeedID WHERE s.ReaderID = ".$readerId;
+	    	$query = "SELECT FeedID, Name, Description, Link FROM feeds";
+			
 	    	$stmt = $db->query($query);
 			for ($i=0; $i<$stmt->rowCount(); $i++) {
 				$row = $stmt->fetch(PDO::FETCH_ASSOC);
-				$response->subs[$i] = $row;
+				$subquery = "SELECT SubscriptionID FROM subscriptions WHERE FeedID = ".$row['FeedID']." AND ReaderID = ".$readerId;
+				$substmt = $db->query($subquery);
+				switch ($substmt->rowCount()) {
+					case 0:
+						$row['subscribed'] = false;
+						break;
+					case 1:
+						$row['subscribed'] = true;
+						break;
+					default:
+						$response->errorMessage = $response->errorMessage.'Database Inconsistency! | ';
+						$response->success = false;
+						return;
+				}
+				$response->feeds[$i] = $row;
 			}
 	    } catch(Exception $e) {
 			$response->errorMessage = $response->errorMessage.'Unable to run the query: '.$e->getMessage().' | ';

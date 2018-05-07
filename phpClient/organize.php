@@ -10,6 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="../js/common.js"></script>
+	<script language="JavaScript" type="text/javascript" src="../js/organize.js"></script>
 </head>
 <body>
     <nav></nav>
@@ -19,67 +20,23 @@
             <article>
                 <table>
                     <tr>
-                        <th><i class="fas fa-plus"></i></th>
+                        <th></th>
                         <th>Feed Name</th>
+						<th>Feed Description</th>
                         <th>Manage</th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>Maria Anders</td>
+                        <td><input id="CB1" type="checkbox"></td>
+                        <td>Anacronic</td>
+						<td>Stiri ciudate</td>
                         <td>
                             <i class="fas fa-link"></i>
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-eraser"></i>
                         </td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>Francisco Chang</td>
-                        <td>
-                            <i class="fas fa-link"></i>
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-eraser"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Roland Mendel</td>
-                        <td>
-                            <i class="fas fa-link"></i>
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-eraser"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Roland Mendel</td>
-                        <td>
-                            <i class="fas fa-link"></i>
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-eraser"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Helen Bennett</td>
-                        <td>
-                            <i class="fas fa-link"></i>
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-eraser"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Yoshi Tannamuri</td>
-                        <td>
-                            <i class="fas fa-link"></i>
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-eraser"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Giovanni Rovelli</td>
+                        <td><input id="CB2" type="checkbox"></td>
+                        <td>Solib</td>
+						<td>Stiri Economice</td>
                         <td>
                             <i class="fas fa-link"></i>
                             <i class="fas fa-edit"></i>
