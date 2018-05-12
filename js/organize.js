@@ -43,12 +43,19 @@ $(document).ready(function () {
     });
 	
 	$(document).on("change", "input:checkbox", function () {
-		alert("to be implemented");
-		if (this.checked) {
-			//INSERT INTO DB
-		} else {
-			//DELETE FROM DB
-		}
+		var dataString = 'readerId='+Cookies.get("readerId")+'&sessionId='+Cookies.get("sessionId")+'&feedId='+$(this).parent().parent().attr('id')+'&checkboxValue='+this.checked;
+		$.post('..\\phpServer\\updateSubscription.php', dataString, function () {
+		})
+		.done(function (jsonObj) {
+			var response = JSON.parse(jsonObj);
+			if(!response.success){
+				alert('An error has occured!')
+				window.location.reload(true);
+			}
+		})
+		.fail(function (response) {
+			console.log('Error while updating subscription:\n' + response.status + ' - ' + response.statusText);
+		});
 	});
 	
 });

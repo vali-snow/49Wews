@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2018 at 06:01 AM
+-- Generation Time: May 12, 2018 at 10:56 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -65,7 +65,7 @@ CREATE TABLE `readers` (
 
 INSERT INTO `readers` (`ReaderID`, `Username`, `Email`, `Password`, `SessionID`) VALUES
 (1, 'admin', 'admin@dv.feed', 'admin', 782197518),
-(2, 'valen', 'valentin@sarghi.com', 'valen', 498259767),
+(2, 'valen', 'valentin@sarghi.com', 'valen', 315390849),
 (3, 'dorina', 'dorina@cabac.com', 'dorina', 0),
 (7, 'admin2', 'admin2@dv.feed', 'admin2', 0),
 (13, 'admin3', 'aa', 'aa', 0),
@@ -88,9 +88,9 @@ CREATE TABLE `subscriptions` (
 --
 
 INSERT INTO `subscriptions` (`SubscriptionID`, `FeedID`, `ReaderID`) VALUES
-(1, 1, 2),
-(2, 2, 2),
-(3, 3, 2);
+(16, 1, 2),
+(19, 2, 2),
+(17, 3, 2);
 
 --
 -- Indexes for dumped tables
@@ -115,7 +115,7 @@ ALTER TABLE `readers`
 --
 ALTER TABLE `subscriptions`
   ADD PRIMARY KEY (`SubscriptionID`),
-  ADD KEY `FeedID` (`FeedID`),
+  ADD UNIQUE KEY `UQ_FeedID_ReaderID` (`FeedID`,`ReaderID`),
   ADD KEY `ReaderID` (`ReaderID`);
 
 --
@@ -138,7 +138,7 @@ ALTER TABLE `readers`
 -- AUTO_INCREMENT for table `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `SubscriptionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `SubscriptionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
