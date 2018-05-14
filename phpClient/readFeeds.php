@@ -17,9 +17,21 @@
     <middle>
         <aside></aside>
         <section id="readFeeds">
-            <form>
-				<select></select>
-			</form>
+			<div>
+				<form id="feeds">
+					<p>Select a feed:</p>
+					<select></select>
+				</form>
+				<form id="dateFilter">
+					<p>Filter date:</p>
+					<select>
+						<option value="1">From today</option>
+						<option value="2">From last 2 Days</option>
+						<option value="7">From last 7 Days</option>
+						<option value="ALL" selected>All articles</option>
+					</select>
+				</form>
+			</div>
         </section>
     </middle>
     <footer></footer>

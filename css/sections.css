@@ -48,6 +48,18 @@
     align-self: flex-end;
     color: var(--accentColor);
 }
+#readFeeds div {
+    display: flex;
+	flex-direction: row;
+	margin: 10px 5px 0px 5px;
+	line-height: 30px;
+	min-height: 30px;
+}
+#readFeeds div > form {
+	display: flex;
+	flex-direction: row;
+	margin: 0px 5px;
+}
 /*ORGANIZE*/
 #organize article {
     padding: 10px 10px 10px 10px;
