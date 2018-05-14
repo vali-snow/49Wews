@@ -36,7 +36,9 @@
     border: 1px solid var(--accentColor);
     margin: 0px 10px 0px 0px;
     height: 70px;
+	min-height: 70px;
     width: 70px;
+	min-width: 70px;
 }
 #readFeeds main p {
     text-indent: 10px;
