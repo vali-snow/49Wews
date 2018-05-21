@@ -54,11 +54,15 @@
 					$row = $stmt->fetch(PDO::FETCH_ASSOC);
 					$link = $row['Link'];
 					$xmlDoc = new DOMDocument();
-					$xmlDoc->load($link);
+					libxml_use_internal_errors(true);
+					if ($xmlDoc->load($link)){
+					}else{
+						continue;
+					}
 					$item_image = null;
-						if (count($xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('image')) !=0){
-							$item_image = $xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('image')->item(0)->getElementsByTagName('url')->item(0)->childNodes->item(0)->nodeValue;
-						}
+					if (count($xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('image')) !=0){
+						$item_image = $xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('image')->item(0)->getElementsByTagName('url')->item(0)->childNodes->item(0)->nodeValue;
+					}
 					foreach ($xmlDoc->getElementsByTagName('item') as $item) {
 						$item_title = $item->getElementsByTagName('title')->item(0)->childNodes->item(0)->nodeValue;
 						$item_link = $item->getElementsByTagName('link')->item(0)->childNodes->item(0)->nodeValue;
@@ -101,7 +105,13 @@
 						$link = $row['Link'];
 						$response->items = array();
 						$xmlDoc = new DOMDocument();
-						$xmlDoc->load($link);
+						libxml_use_internal_errors(true);
+						if ($xmlDoc->load($link)){
+						}else{
+							$response->errorMessage = $response->errorMessage.'Bad Link! | ';
+							$response->success = false;
+							return;
+						}
 						$item_image = null;
 							if (count($xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('image')) !=0){
 								$item_image = $xmlDoc->getElementsByTagName('channel')->item(0)->getElementsByTagName('image')->item(0)->getElementsByTagName('url')->item(0)->childNodes->item(0)->nodeValue;

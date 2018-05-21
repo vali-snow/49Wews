@@ -141,7 +141,7 @@ footer div {
     border-top: 1px solid var(--themeLineColor);
 }
 /*LOGIN MODAL*/
-modalLogin {
+modalOrganize {
     display: none;
     position: fixed;
     z-index: 1;
@@ -160,7 +160,7 @@ modalLogin {
     margin: 0px auto;
     padding: 0px;
     width: 100% !important;
-    max-width: 250px;
+    max-width: 400px;
     border-radius: 2px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     overflow: hidden;
@@ -193,18 +193,19 @@ modalLogin {
 .modal-body {
     padding: 10px 15px 10px 15px;
 }
-.modal-body input[type=submit],button{
-    width: 49%;
+.modal-footer button{
+    width: 32%;
     display: inline-block;
     justify-content: center;
     border: 0px;
     color: rgb(25,25,25);
     text-shadow: 0 1px rgba(0,0,0,0.1); 
     background-color: rgb(200,200,200);
-    padding: 10px 0px;
+    margin: 5px 1px; 
+	padding: 10px 0px;
     font-size: 15px;
 }
-.modal-body input[type=text],input[type=password]{
+.modal-body input[type=text]{
     height: 40px;
     font-size: 16px;
     width: 100%;
@@ -215,6 +216,18 @@ modalLogin {
     border-radius: 2px;
     padding: 0 10px;
     box-sizing: border-box;
+}
+.modal-body textarea{
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    border-radius: 2px;
+    padding: 0 10px;
+    box-sizing: border-box;
+	resize: none;
 }
 .modal-footer {
     padding: 5px 16px;

@@ -6,27 +6,33 @@ function readFeeds(){
 	$.post('..\\phpServer\\getFeedContent.php', dataString, function () {
 	})
 	.done(function (jsonObj) {
-		var response = JSON.parse(jsonObj);
 		$("#readFeeds article").remove();
-		$.each(response.items, function (i, item) {
-			var img;
-			if (item.image){
-				img = item.image;
-			}else{
-				img = item.description.match(/img src="http.*?"/);
-				if (!img) {img = "../img/img.jpg";} else {img = img[0].match(/http.*?(?=")/)[0];}
-			}
-			$("#readFeeds")
-				.append($('<article>')
-					.append($('<header>')
-						.append($('<h1>',{text:item.title})))
-					.append($('<main>')
-						.append($('<img>',{src:img}))
-						.append($('<p>').html(item.description.replace(/<a.*?a>/g,'').replace(/<img.*?\/>/g,'')))
-						.append($('<a>',{href:item.link})
-							.append($('<i>', {class:"fas fa-chevron-circle-right"}))
-						)));
-		});
+		var response = JSON.parse(jsonObj);
+		if (response.success) {
+			
+			$.each(response.items, function (i, item) {
+				var img;
+				if (item.image){
+					img = item.image;
+				}else{
+					img = item.description.match(/img src="http.*?"/);
+					if (!img) {img = "../img/img.jpg";} else {img = img[0].match(/http.*?(?=")/)[0];}
+				}
+				$("#readFeeds")
+					.append($('<article>')
+						.append($('<header>')
+							.append($('<h1>',{text:item.title})))
+						.append($('<main>')
+							.append($('<img>',{src:img}))
+							.append($('<p>').html(item.description.replace(/<a.*?a>/g,'').replace(/<img.*?\/>/g,'')))
+							.append($('<a>',{href:item.link})
+								.append($('<i>', {class:"fas fa-chevron-circle-right"}))
+							)));
+			});
+		} else {
+			
+			window.alert("Unable to read the feeds content!");
+		}
 	})
 	.fail(function (response) {
 		console.log('Error while getting selected feed content:\n' + response.status + ' - ' + response.statusText);
@@ -41,18 +47,23 @@ $(document).ready(function () {
     })
     .done(function (jsonObj) {
         var response = JSON.parse(jsonObj);
-        $("#feeds option").remove();
-		$("#feeds select").append($('<option>', {
-			value: 'ALL',
-			text: 'All feeds'
-		}));
-		$.each(response.subs, function (i, item) {
+		if (response.success) {
+			$("#feeds option").remove();
 			$("#feeds select").append($('<option>', {
-				value: item.FeedID,
-				text : item.Name
+				value: 'ALL',
+				text: 'All feeds'
 			}));
-		});
-		readFeeds();
+			$.each(response.subs, function (i, item) {
+				$("#feeds select").append($('<option>', {
+					value: item.FeedID,
+					text : item.Name
+				}));
+			});
+			readFeeds();
+		} else {
+			window.alert("Unable to read the feeds!");
+		}
+        
     })
     .fail(function (response) {
         console.log('Error while getting subscribed feeds:\n' + response.status + ' - ' + response.statusText);

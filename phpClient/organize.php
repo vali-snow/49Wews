@@ -18,34 +18,27 @@
         <aside></aside>
         <section id="organize">
             <article>
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Feed Name</th>
-						<th>Feed Description</th>
-                        <th>Manage</th>
-                    </tr>
-                    <tr>
-                        <td><input id="CB1" type="checkbox"></td>
-                        <td>Anacronic</td>
-						<td>Stiri ciudate</td>
-                        <td>
-                            <i class="fas fa-link"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input id="CB2" type="checkbox"></td>
-                        <td>Solib</td>
-						<td>Stiri Economice</td>
-                        <td>
-                            <i class="fas fa-link"></i>
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-eraser"></i>
-                        </td>
-                    </tr>
-                </table>
+                <table></table>
             </article>
-        </section>
+			<modalOrganize>
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close">&times;</span>
+						<h2>Modal Header</h2>
+					</div>
+					<div class="modal-body">
+						Name:<br><input type="text" name="name">
+						Description:<br><input type="text" name="description">
+						Link:<br><textarea rows="7" name="link"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button id="submit" type="button">Add Feed</button>
+						<button id="reset" type="button">Reset</button>
+						<button id="close" type="button">Close</button>
+					</div>
+				</div>
+			</modalOrganize>
+		</section>
     </middle>
     <footer></footer>
 </body>
