@@ -58,4 +58,29 @@ $(document).ready(function () {
 		});
 	});
 	
+	$(document).on( "click", ".fa-plus", function() {
+		window.alert("ADD");
+	});
+	$(document).on( "click", ".fa-edit", function() {
+		window.alert("EDIT");
+	});
+	$(document).on( "click", ".fa-eraser", function() {
+		if (confirm("Delete feed?")) {
+				var dataString = 'readerId='+Cookies.get("readerId")+'&sessionId='+Cookies.get("sessionId")+'&feedId='+$(this).parent().parent().attr('id');
+				$.post('..\\phpServer\\deleteFeedCascade.php', dataString, function () {
+				})
+				.done(function (jsonObj) {
+					var response = JSON.parse(jsonObj);
+					if(response.success){
+						$("#"+response.feedId).remove();
+					}else{
+						alert('An error has occured!')
+						window.location.reload(true);
+					}
+				})
+				.fail(function (response) {
+					console.log('Error while deleting the feed:\n' + response.status + ' - ' + response.statusText);
+				});
+            }
+	});
 });
