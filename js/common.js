@@ -1,4 +1,6 @@
 /*global $, Cookies, confirm, document, window*/
+var d4 = new $.Deferred();
+
 function initCookies() {
     'use strict';
     if (Cookies.get("sidebarExtended") === undefined) {
@@ -80,6 +82,7 @@ $(document).ready(function () {
         d3 = new $.Deferred();
     $.when(d1, d2, d3).then(function () {
         initCookies();
+		d4.resolve();
     });
     $("nav").load("../html/nav.html", function () {
         $(".menuBurger").click(function () {

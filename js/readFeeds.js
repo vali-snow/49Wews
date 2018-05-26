@@ -9,7 +9,6 @@ function readFeeds(){
 		$("#readFeeds article").remove();
 		var response = JSON.parse(jsonObj);
 		if (response.success) {
-			
 			$.each(response.items, function (i, item) {
 				var img;
 				if (item.image){
@@ -25,13 +24,15 @@ function readFeeds(){
 						.append($('<main>')
 							.append($('<img>',{src:img}))
 							.append($('<p>').html(item.description.replace(/<a.*?a>/g,'').replace(/<img.*?\/>/g,'')))
-							.append($('<a>',{href:item.link})
-								.append($('<i>', {class:"fas fa-chevron-circle-right"}))
-								.append('<a class="twitter-share-button" href="https://twitter.com/intent/tweet?hashtags=49Wews&text='+item.title.substring(0, 139)+'&url='+item.link+'"><i class="fab fa-twitter-square"></i></a>')
-							)));
+							
+							)
+						.append($('<opt>')
+							.append('<a href="'+item.link+'"><i class="fas fa-chevron-circle-right">Read More</i></a>')
+							.append('<a class="twitter-share-button" href="https://twitter.com/intent/tweet?hashtags=DVFeedReader&text='+item.title.substring(0, 139)+'&url='+item.link+'"><i class="fab fa-twitter-square">Tweet Me</i></a>')
+						));
 			});
+            $("*").css("--accentColor", Cookies.get("themeAccentColor"));
 		} else {
-			
 			window.alert("Unable to read the feeds content!");
 		}
 	})
@@ -43,34 +44,36 @@ function readFeeds(){
 $(document).ready(function () {
     'use strict';
     // get subscribed feeds
-    var dataString = 'readerId='+Cookies.get("readerId")+'&sessionId='+Cookies.get("sessionId");
-    $.post('..\\phpServer\\getSubscriptions.php', dataString, function () {
-    })
-    .done(function (jsonObj) {
-        var response = JSON.parse(jsonObj);
-		if (response.success) {
-			$("#feeds option").remove();
-			$("#feeds select").append($('<option>', {
-				value: 'ALL',
-				text: 'All feeds'
-			}));
-			$.each(response.subs, function (i, item) {
+	$.when(d4).then(function () {
+        var dataString = 'readerId='+Cookies.get("readerId")+'&sessionId='+Cookies.get("sessionId");
+		$.post('..\\phpServer\\getSubscriptions.php', dataString, function () {
+		})
+		.done(function (jsonObj) {
+			var response = JSON.parse(jsonObj);
+			if (response.success) {
+				$("#feeds option").remove();
 				$("#feeds select").append($('<option>', {
-					value: item.FeedID,
-					text : item.Name
+					value: 'ALL',
+					text: 'All feeds'
 				}));
-			});
+				$.each(response.subs, function (i, item) {
+					$("#feeds select").append($('<option>', {
+						value: item.FeedID,
+						text : item.Name
+					}));
+				});
+				readFeeds();
+			} else {
+				window.alert("Unable to read the feeds!");
+			}
+			
+		})
+		.fail(function (response) {
+			console.log('Error while getting subscribed feeds:\n' + response.status + ' - ' + response.statusText);
+		});
+		
+		$("#readFeeds form select").change(function() {
 			readFeeds();
-		} else {
-			window.alert("Unable to read the feeds!");
-		}
-        
-    })
-    .fail(function (response) {
-        console.log('Error while getting subscribed feeds:\n' + response.status + ' - ' + response.statusText);
+		});
     });
-	
-	$("#readFeeds form select").change(function() {
-		readFeeds();
-	});
 });

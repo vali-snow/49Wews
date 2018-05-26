@@ -45,8 +45,20 @@
     text-align: justify;
 }
 #readFeeds main i {
-    align-self: flex-end;
     color: var(--accentColor);
+}
+#readFeeds opt {
+	display:flex;
+	flex-direction: row-reverse;
+}
+#readFeeds opt a {
+	width:100px;
+}
+#readFeeds opt a:nth-of-type(1) {
+	color:var(--accentColor);
+}
+#readFeeds opt a:nth-of-type(2) {
+	color:#00aced;
 }
 #readFeeds div {
     display: flex;
