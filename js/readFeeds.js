@@ -28,7 +28,7 @@ function readFeeds(){
 							)
 						.append($('<opt>')
 							.append('<a href="'+item.link+'"><i class="fas fa-chevron-circle-right">Read More</i></a>')
-							.append('<a class="twitter-share-button" href="https://twitter.com/intent/tweet?hashtags=DVFeedReader&text='+item.title.substring(0, 139)+'&url='+item.link+'"><i class="fab fa-twitter-square">Tweet Me</i></a>')
+							.append('<a class="twitter-share-button" href="https://twitter.com/intent/tweet?hashtags=DVFeedReader&text='+item.title.substring(0, 139).replace("#", "")+'&url='+item.link+'"><i class="fab fa-twitter-square">Tweet Me</i></a>')
 						));
 			});
             $("*").css("--accentColor", Cookies.get("themeAccentColor"));
