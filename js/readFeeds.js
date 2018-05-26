@@ -27,6 +27,7 @@ function readFeeds(){
 							.append($('<p>').html(item.description.replace(/<a.*?a>/g,'').replace(/<img.*?\/>/g,'')))
 							.append($('<a>',{href:item.link})
 								.append($('<i>', {class:"fas fa-chevron-circle-right"}))
+								.append('<a class="twitter-share-button" href="https://twitter.com/intent/tweet?hashtags=49Wews&text='+item.title.substring(0, 139)+'&url='+item.link+'"><i class="fab fa-twitter-square"></i></a>')
 							)));
 			});
 		} else {
