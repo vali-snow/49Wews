@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2018 at 10:56 AM
+-- Generation Time: May 26, 2018 at 01:01 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -41,9 +41,11 @@ CREATE TABLE `feeds` (
 
 INSERT INTO `feeds` (`FeedID`, `Name`, `Description`, `Link`) VALUES
 (1, 'Anacronic', 'Stiri Altfel', 'http://www.anacronic.ro/feed/'),
-(2, 'Karamazov', 'Stiri Religioase', 'http://karamazov.ro/index.php?format=feed&type=rss'),
-(3, 'The Guardian', 'Stiri Externe', 'https://www.theguardian.com/uk/rss'),
-(4, 'Marginalia', 'Stiri Elitiste', 'https://www.marginaliaetc.ro/feed/');
+(2, 'Karamazov', 'Stiri Religioase', 'http://karamazov.ro/index.php?format=feed'),
+(3, 'Marginalia', 'Stiri Elitiste', 'https://www.marginaliaetc.ro/feed/'),
+(9, 'Zoso', 'Stiri Mondene', 'https://www.zoso.ro/feed/'),
+(10, 'It-Blog.ro', 'Stiri Tech', 'https://www.it-blog.ro/feed'),
+(11, 'Logica Economica', 'Stiri Economice', 'https://logec.ro/feed/');
 
 -- --------------------------------------------------------
 
@@ -64,9 +66,9 @@ CREATE TABLE `readers` (
 --
 
 INSERT INTO `readers` (`ReaderID`, `Username`, `Email`, `Password`, `SessionID`) VALUES
-(1, 'admin', 'admin@dv.feed', 'admin', 782197518),
-(2, 'valen', 'valentin@sarghi.com', 'valen', 315390849),
+(1, 'admin', 'admin@dv.feed', 'admin', 596143072),
 (3, 'dorina', 'dorina@cabac.com', 'dorina', 0),
+(4, 'valen', 'valentin@sarghi.com', 'valen', 490692086),
 (7, 'admin2', 'admin2@dv.feed', 'admin2', 0),
 (13, 'admin3', 'aa', 'aa', 0),
 (16, 'admin4', 'admin4', 'admin4', 0);
@@ -88,9 +90,11 @@ CREATE TABLE `subscriptions` (
 --
 
 INSERT INTO `subscriptions` (`SubscriptionID`, `FeedID`, `ReaderID`) VALUES
-(16, 1, 2),
-(19, 2, 2),
-(17, 3, 2);
+(16, 1, 4),
+(31, 2, 1),
+(19, 2, 4),
+(29, 9, 1),
+(32, 11, 1);
 
 --
 -- Indexes for dumped tables
@@ -116,7 +120,7 @@ ALTER TABLE `readers`
 ALTER TABLE `subscriptions`
   ADD PRIMARY KEY (`SubscriptionID`),
   ADD UNIQUE KEY `UQ_FeedID_ReaderID` (`FeedID`,`ReaderID`),
-  ADD KEY `ReaderID` (`ReaderID`);
+  ADD KEY `subscriptions_ibfk_2` (`ReaderID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -126,7 +130,7 @@ ALTER TABLE `subscriptions`
 -- AUTO_INCREMENT for table `feeds`
 --
 ALTER TABLE `feeds`
-  MODIFY `FeedID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `FeedID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `readers`
@@ -138,7 +142,7 @@ ALTER TABLE `readers`
 -- AUTO_INCREMENT for table `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `SubscriptionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `SubscriptionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Constraints for dumped tables
@@ -148,8 +152,8 @@ ALTER TABLE `subscriptions`
 -- Constraints for table `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  ADD CONSTRAINT `subscriptions_ibfk_1` FOREIGN KEY (`FeedID`) REFERENCES `feeds` (`FeedID`),
-  ADD CONSTRAINT `subscriptions_ibfk_2` FOREIGN KEY (`ReaderID`) REFERENCES `readers` (`ReaderID`);
+  ADD CONSTRAINT `subscriptions_ibfk_1` FOREIGN KEY (`FeedID`) REFERENCES `feeds` (`FeedID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `subscriptions_ibfk_2` FOREIGN KEY (`ReaderID`) REFERENCES `readers` (`ReaderID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
